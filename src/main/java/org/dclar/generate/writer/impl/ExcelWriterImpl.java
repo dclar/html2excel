@@ -75,21 +75,30 @@ public class ExcelWriterImpl implements Writer {
                 r.addMergedEntity(mergedEntity);
                 log.debug("Merged CellRangeAddress内容： {}", cellRangeAddress);
 
-                r.getRow(bulk.getSheet()).createCell(r.getColIndex()).setCellValue(tag.getContent());
-                r.colIndexPlus1();
+                // r.getRow(bulk.getSheet()).createCell(r.getColIndex()).setCellValue(tag.getContent());
+                //setContent(r, bulk, tag);
+                //r.colIndexPlus1();
             }
-        } else {
+        } // else {
 
-            Cell cell = r.getRow(bulk.getSheet()).createCell(r.getColIndex());
-            bulk.setCell(cell);
-            cell.setCellValue(tag.getContent());
+//            Cell cell = r.getRow(bulk.getSheet()).createCell(r.getColIndex());
+//            bulk.setCell(cell);
+//            cell.setCellValue(tag.getContent());
 
-            styleImpl.setStyle(bulk);
+        setContent(r, bulk, tag);
+        styleImpl.setStyle(bulk);
 
-            log.debug("书写操作： {},  row: {} , col: {} ", tag.getContent(), r.getRowIndex(), r.getColIndex());
-            r.colIndexPlus1();
-        }
+        log.debug("书写操作： {},  row: {} , col: {} ", tag.getContent(), r.getRowIndex(), r.getColIndex());
+        r.colIndexPlus1();
+        //}
         refresh(r);
+    }
+
+
+    private void setContent(RangeEntity r, Bulk bulk, Tag tag) {
+        Cell cell = r.getRow(bulk.getSheet()).createCell(r.getColIndex());
+        bulk.setCell(cell);
+        cell.setCellValue(tag.getContent());
     }
 
 

@@ -19,7 +19,7 @@ public class Start {
 
     public static void main(String[] args) throws Exception {
 
-        String tableFilePath = "/Users/yl/Downloads/table2";
+        String tableFilePath = "/Users/yl/Downloads/table5";
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(tableFilePath))));
 
