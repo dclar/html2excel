@@ -19,6 +19,25 @@ public class FetcherHelper {
 
     public static Logger log = LoggerFactory.getLogger(FetcherHelper.class);
 
+
+    /**
+     * 截取<table>开头到</table>结尾的部分其余内容删除
+     *
+     * @param rawContent
+     * @return
+     */
+    public static String cleanUp(String rawContent) {
+        return
+                TagUtil.cutDownTagStartUntilMatchFirstEnd(
+                        rawContent,
+                        Const.HTML_LEFT_BRACKET.concat(Const.HTML_TAG_TABLE),
+                        Const.HTML_LEFT_BRACKET
+                                .concat(Const.HTML_TAG_SLASH)
+                                .concat(Const.HTML_TAG_TABLE)
+                                .concat(Const.HTML_RIGHT_BRACKET),0);
+    }
+
+
     /**
      * 从rawContent中获得第一个系统支持的tag name
      *

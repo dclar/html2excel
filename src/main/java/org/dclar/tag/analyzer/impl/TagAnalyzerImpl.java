@@ -35,7 +35,7 @@ public class TagAnalyzerImpl implements TagAnalyzer {
 
     @Override
     public Tag analyse(String rawContent) throws Exception {
-        RawTagInfo rawTagInfo = tagFetcherImpl.fetch(FetcherHelper.getFirst(rawContent));
+        RawTagInfo rawTagInfo = tagFetcherImpl.fetch(FetcherHelper.getFirst(FetcherHelper.cleanUp(rawContent)));
         return rawTagInfo.getTag();
     }
 
